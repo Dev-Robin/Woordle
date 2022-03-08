@@ -4,50 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic:wdth@100&display=swap" rel="stylesheet">    
+    <title> WOORDLE </title>
+    <link rel="icon" type="image/x-icon" href="Logo.png">
     <script type="text/javascript" src="scripts/words.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>    
 </head>
 <body>
-    <button type="button" onclick="randWord()">click</button>
-    <div class="grid-full">
-        <div class="grid-row">
+    <header>
+        <h1>WOORDLE</h1>
+    </header>
+    <div class="grid">
+        <div class="grid-full">
             <div class="grid-item" id="1"></div>
             <div class="grid-item" id="2"></div>
             <div class="grid-item" id="3"></div>
             <div class="grid-item" id="4"></div>
             <div class="grid-item" id="5"></div>
-        </div>
-        <div class="grid-row">
             <div class="grid-item" id="6"></div>
             <div class="grid-item" id="7"></div>
             <div class="grid-item" id="8"></div>
             <div class="grid-item" id="9"></div>
             <div class="grid-item" id="10"></div>
-        </div> 
-        <div class="grid-row"> 
             <div class="grid-item" id="11"></div>
             <div class="grid-item" id="12"></div>
             <div class="grid-item" id="13"></div>
             <div class="grid-item" id="14"></div>
             <div class="grid-item" id="15"></div>
-        </div> 
-        <div class="grid-row"> 
             <div class="grid-item" id="16"></div>
             <div class="grid-item" id="17"></div>
             <div class="grid-item" id="18"></div>
             <div class="grid-item" id="19"></div>
             <div class="grid-item" id="20"></div>
-        </div> 
-        <div class="grid-row"> 
             <div class="grid-item" id="21"></div>
             <div class="grid-item" id="22"></div>
             <div class="grid-item" id="23"></div>
             <div class="grid-item" id="24"></div>
-            <div class="grid-item" id="25"></div>
-        </div> 
-        <div class="grid-row"> 
+            <div class="grid-item" id="25"></div> 
             <div class="grid-item" id="26"></div>
             <div class="grid-item" id="27"></div>
             <div class="grid-item" id="28"></div>
@@ -55,5 +51,43 @@
             <div class="grid-item" id="30"></div>
         </div>
     </div>
+    
+    <div class="keyboard">
+        <div class="row">
+            <button type="button" onclick="">q</button>
+            <button type="button" onclick="">w</button>
+            <button type="button" onclick="">e</button>
+            <button type="button" onclick="">r</button>
+            <button type="button" onclick="">t</button>
+            <button type="button" onclick="">y</button>
+            <button type="button" onclick="">u</button>
+            <button type="button" onclick="">i</button>
+            <button type="button" onclick="">o</button>
+            <button type="button" onclick="">p</button>
+        </div>
+        <div class="row">
+            <button type="button" onclick="">a</button>
+            <button type="button" onclick="">s</button>
+            <button type="button" onclick="">d</button>
+            <button type="button" onclick="">f</button>
+            <button type="button" onclick="">g</button>
+            <button type="button" onclick="">h</button>
+            <button type="button" onclick="">j</button>
+            <button type="button" onclick="">k</button>
+            <button type="button" onclick="">l</button>
+        </div>
+        <div class="row">
+            <button type="button" class="special" onclick="">enter</button>
+            <button type="button" onclick="">z</button>
+            <button type="button" onclick="">x</button>
+            <button type="button" onclick="">c</button>
+            <button type="button" onclick="">v</button>
+            <button type="button" onclick="">b</button>
+            <button type="button" onclick="">n</button>
+            <button type="button" onclick="">m</button>
+            <button type="button" class="special" onclick=""><img src="backspace.png"></button>
+        </div>
+    </div>
+    <button type="button" class="random" onclick="randWord()">Click</button>
 </body>
 </html>

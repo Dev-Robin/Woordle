@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(39, 39, 39);
+}
+  
+h1 {
+    color: white;
+    text-align: center;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 80px;
+    margin-top: 60px;
+}
+.grid {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-full {
+    display: inline-grid;
+    grid-template-columns:auto auto auto auto auto;
+}
+
+.grid-item {
+    border: 2px solid rgb(151, 148, 148);
+    background-color: rgb(39, 39, 39);
+    height: 60px;
+    width: 60px;
+    margin: 3px;
+    text-align: center;
+    color: white;
+}
+
+.keyboard {
+    margin-top: 60px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border: 2px solid rgb(39,39,39);
+    background-color: rgb(182, 180, 180);
+    height: 60px;
+    border-radius: 5px;
+    width: 45px;
+    margin: 1px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+
+}
+
+button:hover {
+    background-color: rgb(151, 150, 150);
+}
+
+.special {
+    width: 65px;
+}
+
+.special img {
+   height: 25px; 
+   width: 25px;
+   filter: invert(1);
+}
