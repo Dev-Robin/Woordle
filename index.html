@@ -8,15 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic:wdth@100&display=swap" rel="stylesheet">    
-    <title> WOORDLE </title>
+    <title>WOORDLE</title>
     <link rel="icon" type="image/x-icon" href="Logo.png">
     <script type="text/javascript" src="scripts/words.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>    
 </head>
-<body>
+<body onload="randWord()">
     <header>
-        <h1>WOORDLE</h1>
+        <h1 class="title">WOORDLE</h1>
     </header>
+    <!--Playing field-->
     <div class="grid">
         <div class="grid-full">
             <div class="grid-item" id="1"></div>
@@ -51,43 +52,43 @@
             <div class="grid-item" id="30"></div>
         </div>
     </div>
-    
+    <!--Keyboard-->
     <div class="keyboard">
         <div class="row">
-            <button type="button" onclick="">q</button>
-            <button type="button" onclick="">w</button>
-            <button type="button" onclick="">e</button>
-            <button type="button" onclick="">r</button>
-            <button type="button" onclick="">t</button>
-            <button type="button" onclick="">y</button>
-            <button type="button" onclick="">u</button>
-            <button type="button" onclick="">i</button>
-            <button type="button" onclick="">o</button>
-            <button type="button" onclick="">p</button>
+            <button type="button" data-key="q" onclick="keyBoard(this)">q</button>
+            <button type="button" data-key="w" onclick="keyBoard(this)">w</button>
+            <button type="button" data-key="e" onclick="keyBoard(this)">e</button>
+            <button type="button" data-key="r" onclick="keyBoard(this)">r</button>
+            <button type="button" data-key="t" onclick="keyBoard(this)">t</button>
+            <button type="button" data-key="y" onclick="keyBoard(this)">y</button>
+            <button type="button" data-key="u" onclick="keyBoard(this)">u</button>
+            <button type="button" data-key="i" onclick="keyBoard(this)">i</button>
+            <button type="button" data-key="o" onclick="keyBoard(this)">o</button>
+            <button type="button" data-key="p" onclick="keyBoard(this)">p</button>
+        </div> 
+        <div class="row">
+            <button type="button" data-key="a" onclick="keyBoard(this)">a</button>
+            <button type="button" data-key="s" onclick="keyBoard(this)">s</button>
+            <button type="button" data-key="d" onclick="keyBoard(this)">d</button>
+            <button type="button" data-key="f" onclick="keyBoard(this)">f</button>
+            <button type="button" data-key="g" onclick="keyBoard(this)">g</button>
+            <button type="button" data-key="h" onclick="keyBoard(this)">h</button>
+            <button type="button" data-key="j" onclick="keyBoard(this)">j</button>
+            <button type="button" data-key="k" onclick="keyBoard(this)">k</button>
+            <button type="button" data-key="l" onclick="keyBoard(this)">l</button>
         </div>
         <div class="row">
-            <button type="button" onclick="">a</button>
-            <button type="button" onclick="">s</button>
-            <button type="button" onclick="">d</button>
-            <button type="button" onclick="">f</button>
-            <button type="button" onclick="">g</button>
-            <button type="button" onclick="">h</button>
-            <button type="button" onclick="">j</button>
-            <button type="button" onclick="">k</button>
-            <button type="button" onclick="">l</button>
-        </div>
-        <div class="row">
-            <button type="button" class="special" onclick="">enter</button>
-            <button type="button" onclick="">z</button>
-            <button type="button" onclick="">x</button>
-            <button type="button" onclick="">c</button>
-            <button type="button" onclick="">v</button>
-            <button type="button" onclick="">b</button>
-            <button type="button" onclick="">n</button>
-            <button type="button" onclick="">m</button>
-            <button type="button" class="special" onclick=""><img src="backspace.png"></button>
+            <button type="button" data-key="enter" class="special" onclick="enterKey()">enter</button>
+            <button type="button" data-key="z" onclick="keyBoard(this)">z</button>
+            <button type="button" data-key="x" onclick="keyBoard(this)">x</button>
+            <button type="button" data-key="c" onclick="keyBoard(this)">c</button>
+            <button type="button" data-key="v" onclick="keyBoard(this)">v</button>
+            <button type="button" data-key="b" onclick="keyBoard(this)">b</button>
+            <button type="button" data-key="n" onclick="keyBoard(this)">n</button>
+            <button type="button" data-key="m" onclick="keyBoard(this)">m</button>
+            <button type="button" data-key="backspace" class="special" onclick="backSpaceKey()"><img src="backspace.png"></button>
         </div>
     </div>
-    <button type="button" class="random" onclick="randWord()">Click</button>
+    <!--<button type="button" class="random" onclick="randWord()">Click</button>-->
 </body>
 </html>
