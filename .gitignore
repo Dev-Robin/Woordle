@@ -1,0 +1,4 @@
+# Files to ignore at commit
+words.txt
+todo.txt
+words.json
