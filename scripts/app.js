@@ -59,10 +59,12 @@ function checkWord() {
                 if (guessArr[i] == wordArr[i]) {
                     // The guessed letter is at the right place
                     console.log(guessArr[i] + " is positioned at the right place!");
+                    // Paint the square of the correct letter green
                     document.getElementById(colum*5 + i + 1).style.backgroundColor = "#6db347";
                 } else {
                     // The guessed letter is not at the right place but the word does contain the guessed letter
                     console.log("The word contains: " + guessArr[i]);
+                    // Paint the square of the correct letter yellow
                     document.getElementById(colum*5 + i + 1).style.backgroundColor = "#dbd24d";
                 }
             } else {
