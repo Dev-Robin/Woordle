@@ -12,7 +12,8 @@ body {
     text-align: center;
     font-family: 'League Gothic', sans-serif;
     font-size: 80px;
-    margin-top: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .grid {
     display: flex;
