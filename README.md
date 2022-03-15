@@ -1,2 +1,2 @@
 # webGame
- Wordle clone but with Dutch wordds
+ Wordle clone but with Dutch words
