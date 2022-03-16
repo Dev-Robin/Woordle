@@ -95,6 +95,10 @@ function addLetter(letter) {
     if (guessArr.length < 5) {
         // Set grid-item to the typed letter
         document.getElementById(grid).innerHTML = letter;
+        // Animation
+        document.getElementById(grid).style.animation = "keyPress 0.3s";
+        //document.getElementById(grid).style.animation = "";        
+
         guessArr.push(letter);
         console.log(guessArr);
         grid++;
