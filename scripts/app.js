@@ -110,11 +110,13 @@ function keyBoard(button) {
 
 // Add functionality to backspace key
 function backSpaceKey() {
-    guessArr.length = guessArr.length - 1;
+    if (guessArr.length > 0) {
+        guessArr.length = guessArr.length - 1;
     
-    // Update GUI
-    grid = grid - 1;
-    document.getElementById(grid).innerHTML = '';
+        // Update GUI
+        grid = grid - 1;
+        document.getElementById(grid).innerHTML = '';
+    }
 }
 
 // Add functionality to enter key
@@ -130,11 +132,13 @@ function enterKey() {
             guessArr.length = 0;
             if (guess == word) {
                 reset();
+                break;
             }
             if (colum >= 6) {
                 // Reset is max amount of guesses is reached
                 alert("Je hebt al je beurten gespeeld. Het woord was: " + word);
                 reset();
+                break;
             }
             break;
         } else if (i == words.length + 1) {

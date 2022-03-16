@@ -61,8 +61,9 @@ button {
 }
 
 button:hover {
-    background-color: rgb(151, 150, 150);
+    filter: brightness(70%);
 }
+
 
 .special {
     width: 65px;
