@@ -98,7 +98,6 @@ function addLetter(letter) {
         // Animation
         document.getElementById(grid).style.animation = "keyPress 0.3s";
         // Timer is needed to not remove the animation instantly and allow the user to get to the next square
-        setTimeout(() => {  document.getElementById(grid-1).style.animation = ""; }, 100);
         //document.getElementById(grid-1).style.animation = "";        
 
         guessArr.push(letter);
@@ -122,6 +121,7 @@ function backSpaceKey() {
         // Update GUI
         grid = grid - 1;
         document.getElementById(grid).innerHTML = '';
+        document.getElementById(grid).style.animation = "";
     }
 }
 
