@@ -95,6 +95,11 @@ function addLetter(letter) {
     if (guessArr.length < 5) {
         // Set grid-item to the typed letter
         document.getElementById(grid).innerHTML = letter;
+        // Animation
+        document.getElementById(grid).style.animation = "keyPress 0.3s";
+        // Timer is needed to not remove the animation instantly and allow the user to get to the next square
+        //document.getElementById(grid-1).style.animation = "";        
+
         guessArr.push(letter);
         console.log(guessArr);
         grid++;
@@ -116,6 +121,7 @@ function backSpaceKey() {
         // Update GUI
         grid = grid - 1;
         document.getElementById(grid).innerHTML = '';
+        document.getElementById(grid).style.animation = "";
     }
 }
 
@@ -150,15 +156,16 @@ function enterKey() {
 
 // Reset the board for the next game
 function reset() {
-    // For every tile on the board; clear the text
+    // For every tile on the board; clear the text and reset colors
     for (let i = 1; i <= 30; i++) {
         document.getElementById(i).innerHTML = "";
         document.getElementById(i).style.backgroundColor = "#272727";
         document.getElementById(i).style.borderColor = "#979494";
-        guessArr.length = 0;
-        colum = 0;
-        grid = 1;       
+        document.getElementById(i).style.animation = "";      
     }
+    guessArr.length = 0;
+    colum = 0;
+    grid = 1; 
     // Reset keyboard colors
     let kbButtons = document.getElementsByTagName('button');
 
