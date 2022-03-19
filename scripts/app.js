@@ -52,8 +52,8 @@ function checkWord() {
     if (guess == word) {
         console.log("You guessed the right word!");
         for (let i = 0; i <= guessArr.length - 1; i++) {
-            document.getElementById(colum*5 + i + 1).style.backgroundColor = "#6db347";
-            document.getElementById(colum*5 + i + 1).style.borderColor = "#6db347";
+            document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
+            document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
         }
         alert("Je hebt het goed geraden! Het woord was: " + word);
     } else {
@@ -106,18 +106,18 @@ function correctLetter (i) {
     // The guessed letter is at the right place
     console.log(guessArr[i] + " is positioned at the right place!");
     // Paint the square of the correct letter green
-    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#6db347";
-    document.getElementById(colum*5 + i + 1).style.borderColor = "#6db347";
-    document.getElementById(guessArr[i]).style.backgroundColor = "#6db347";
+    document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
+    document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
+    document.getElementById(guessArr[i]).style.backgroundColor = "var(--correct)";
 }
 
 function semiCorrectLetter (i) {
     // The guessed letter is not at the right place but the word does contain the guessed letter
     console.log("The word contains: " + guessArr[i]);
     // Paint the square of the correct letter yellow
-    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#dbd24d";
-    document.getElementById(colum*5 + i + 1).style.borderColor = "#dbd24d";
-    document.getElementById(guessArr[i]).style.backgroundColor = "#dbd24d";
+    document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--semiCorrect)";
+    document.getElementById(colum*5 + i + 1).style.borderColor = "var(--semiCorrect)";
+    document.getElementById(guessArr[i]).style.backgroundColor = "var(--semiCorrect)";
 }
 
 function incorrectLetter (i) {
@@ -125,11 +125,11 @@ function incorrectLetter (i) {
     console.log("The word does not contain: " + guessArr[i]);
     // Paint the square of the incorrect letter grey
     if (colum*5 + i + 1 != colum*5 + 6) {
-        document.getElementById(colum*5 + i + 1).style.backgroundColor = "#454545";
-        document.getElementById(colum*5 + i + 1).style.borderColor = "#454545";
+        document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--incorrect)";
+        document.getElementById(colum*5 + i + 1).style.borderColor = "var(--incorrect)";
     }
     if (guessArr[i] != null) {
-        document.getElementById(guessArr[i]).style.backgroundColor = "#454545";
+        document.getElementById(guessArr[i]).style.backgroundColor = "var(--incorrect)";
     }
 }
 
@@ -200,8 +200,8 @@ function reset() {
     // For every tile on the board; clear the text
     for (let i = 1; i <= 30; i++) {
         document.getElementById(i).innerHTML = "";
-        document.getElementById(i).style.backgroundColor = "#272727";
-        document.getElementById(i).style.borderColor = "#979494";
+        document.getElementById(i).style.backgroundColor = "var(--background)";
+        document.getElementById(i).style.borderColor = "var(--border)";
         guessArr.length = 0;
         colum = 0;
         grid = 1;       
@@ -210,7 +210,7 @@ function reset() {
     let kbButtons = document.getElementsByTagName('button');
 
     for(let i = 0; i < kbButtons.length; i++) {
-        kbButtons[i].style.backgroundColor = "#b6b4b4";
+        kbButtons[i].style.backgroundColor = "var(--buttonBg)";
     }
 
     
