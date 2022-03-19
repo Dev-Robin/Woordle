@@ -62,7 +62,7 @@ function checkWord() {
         console.log(guessDuplicates);
         // Check if the guess matches any letters with the word
         for (let i = 0; i <= guessArr.length; i++) {
-            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i])) {
+            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i]) && wordDuplicates.includes(guessArr[i])) {
                 if (wordDuplicates.length > 0) {
                     for (let k = 0; k <= wordDuplicates.length; k++) {
                         for (let j = 0; j <= guessDuplicates.length; j++) {
