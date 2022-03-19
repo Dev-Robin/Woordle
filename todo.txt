@@ -1,1 +1,1 @@
-color variables css; correct = green, close = yellow, grey = incorrect + [keyboard colors]
+

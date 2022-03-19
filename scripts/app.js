@@ -4,6 +4,7 @@ let guess;
 let guessArr = [];
 let grid = 1;
 let colum = 0;
+let wordDuplicates = [];
 
 keyPress();
 function randWord() {
@@ -12,7 +13,9 @@ function randWord() {
 
     word = words[rand];
     console.log(word);
-    return word;
+    // Check for duplicate letters
+    wordDuplicates = checkDuplicates(word);
+    console.log(wordDuplicates);
 }
 
 
@@ -54,39 +57,79 @@ function checkWord() {
         }
         alert("Je hebt het goed geraden! Het woord was: " + word);
     } else {
+        const wordArr = word.split('');
+        let guessDuplicates = checkDuplicates(guess);
+        console.log(guessDuplicates);
         // Check if the guess matches any letters with the word
         for (let i = 0; i <= guessArr.length; i++) {
-            const wordArr = word.split('');
-            if (word.includes(guessArr[i])) {
-                // Check if the guessed letter is positioned at the right place
-                if (guessArr[i] == wordArr[i]) {
-                    // The guessed letter is at the right place
-                    console.log(guessArr[i] + " is positioned at the right place!");
-                    // Paint the square of the correct letter green
-                    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#6db347";
-                    document.getElementById(colum*5 + i + 1).style.borderColor = "#6db347";
-                    document.getElementById(guessArr[i]).style.backgroundColor = "#6db347";
+            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i])) {
+                if (wordDuplicates.length > 0) {
+                    for (let k = 0; k <= wordDuplicates.length; k++) {
+                        for (let j = 0; j <= guessDuplicates.length; j++) {
+                            if (wordDuplicates[k] == guessDuplicates[j]) {
+                                if (guessArr[i] == wordArr[i]) {
+                                    correctLetter(i);
+                                } else {
+                                    semiCorrectLetter(i);
+                                }
+                            }
+                        }
+                    }
                 } else {
-                    // The guessed letter is not at the right place but the word does contain the guessed letter
-                    console.log("The word contains: " + guessArr[i]);
-                    // Paint the square of the correct letter yellow
-                    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#dbd24d";
-                    document.getElementById(colum*5 + i + 1).style.borderColor = "#dbd24d";
-                    document.getElementById(guessArr[i]).style.backgroundColor = "#dbd24d";
+                    if (i <= guessArr.indexOf(guessArr[i])) {
+                        if (guessArr[i] == wordArr[i]) {
+                            correctLetter(i);
+                        } else {
+                            semiCorrectLetter(i);
+                        }
+                    } else {
+                        incorrectLetter(i);
+                    }
                 }
             } else {
-                // The guessed letter is not in the word
-                console.log("The word does not contain: " + guessArr[i]);
-                // Paint the square of the incorrect letter grey
-                if (colum*5 + i + 1 != colum*5 + 6) {
-                    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#454545";
-                    document.getElementById(colum*5 + i + 1).style.borderColor = "#454545";
-                }
-                if (guessArr[i] != null) {
-                    document.getElementById(guessArr[i]).style.backgroundColor = "#454545";
+                if (word.includes(guessArr[i])) {
+                    // Check if the guessed letter is positioned at the right place
+                    if (guessArr[i] == wordArr[i]) {
+                        correctLetter(i);
+                    } else {
+                        semiCorrectLetter(i);
+                    }
+                } else {
+                    incorrectLetter(i);
                 }
             }
         }
+    }
+}
+
+function correctLetter (i) {
+    // The guessed letter is at the right place
+    console.log(guessArr[i] + " is positioned at the right place!");
+    // Paint the square of the correct letter green
+    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#6db347";
+    document.getElementById(colum*5 + i + 1).style.borderColor = "#6db347";
+    document.getElementById(guessArr[i]).style.backgroundColor = "#6db347";
+}
+
+function semiCorrectLetter (i) {
+    // The guessed letter is not at the right place but the word does contain the guessed letter
+    console.log("The word contains: " + guessArr[i]);
+    // Paint the square of the correct letter yellow
+    document.getElementById(colum*5 + i + 1).style.backgroundColor = "#dbd24d";
+    document.getElementById(colum*5 + i + 1).style.borderColor = "#dbd24d";
+    document.getElementById(guessArr[i]).style.backgroundColor = "#dbd24d";
+}
+
+function incorrectLetter (i) {
+    // The guessed letter is not in the word
+    console.log("The word does not contain: " + guessArr[i]);
+    // Paint the square of the incorrect letter grey
+    if (colum*5 + i + 1 != colum*5 + 6) {
+        document.getElementById(colum*5 + i + 1).style.backgroundColor = "#454545";
+        document.getElementById(colum*5 + i + 1).style.borderColor = "#454545";
+    }
+    if (guessArr[i] != null) {
+        document.getElementById(guessArr[i]).style.backgroundColor = "#454545";
     }
 }
 
@@ -95,6 +138,9 @@ function addLetter(letter) {
     if (guessArr.length < 5) {
         // Set grid-item to the typed letter
         document.getElementById(grid).innerHTML = letter;
+        // Animation
+        document.getElementById(grid).style.animation = "keyPress 0.3s";
+
         guessArr.push(letter);
         console.log(guessArr);
         grid++;
@@ -116,6 +162,7 @@ function backSpaceKey() {
         // Update GUI
         grid = grid - 1;
         document.getElementById(grid).innerHTML = '';
+        document.getElementById(grid).style.animation = "";
     }
 }
 
@@ -170,3 +217,19 @@ function reset() {
     // Pick a new secret word
     randWord();
 }
+
+// Function to check for duplicate letters in a word
+function checkDuplicates (word) {
+    const wordArr = word.split('');
+    const set = new Set(wordArr);
+
+    let duplicates = wordArr.filter(item => {
+    if (set.has(item)) {
+        set.delete(item);
+    } else {
+        return item;
+    }
+    });
+    return duplicates
+}
+
