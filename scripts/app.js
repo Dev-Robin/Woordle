@@ -62,6 +62,7 @@ function checkWord() {
         console.log(guessDuplicates);
         // Check if the guess matches any letters with the word
         for (let i = 0; i <= guessArr.length; i++) {
+            // Check for duplicate letters in the guess and match them with duplicates in the hidden word
             if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i]) && wordDuplicates.includes(guessArr[i])) {
                 if (wordDuplicates.length > 0) {
                     for (let k = 0; k <= wordDuplicates.length; k++) {
@@ -102,8 +103,8 @@ function checkWord() {
     }
 }
 
+// The guessed letter is at the right place
 function correctLetter (i) {
-    // The guessed letter is at the right place
     console.log(guessArr[i] + " is positioned at the right place!");
     // Paint the square of the correct letter green
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
@@ -111,8 +112,8 @@ function correctLetter (i) {
     document.getElementById(guessArr[i]).style.backgroundColor = "var(--correct)";
 }
 
+// The guessed letter is not at the right place but the word does contain the guessed letter
 function semiCorrectLetter (i) {
-    // The guessed letter is not at the right place but the word does contain the guessed letter
     console.log("The word contains: " + guessArr[i]);
     // Paint the square of the correct letter yellow
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--semiCorrect)";
@@ -120,8 +121,8 @@ function semiCorrectLetter (i) {
     document.getElementById(guessArr[i]).style.backgroundColor = "var(--semiCorrect)";
 }
 
+ // The guessed letter is not in the word
 function incorrectLetter (i) {
-    // The guessed letter is not in the word
     console.log("The word does not contain: " + guessArr[i]);
     // Paint the square of the incorrect letter grey
     if (colum*5 + i + 1 != colum*5 + 6) {
@@ -182,7 +183,7 @@ function enterKey() {
                 break;
             }
             if (colum >= 6) {
-                // Reset is max amount of guesses is reached
+                // Reset if max amount of guesses is reached
                 alert("Je hebt al je beurten gespeeld. Het woord was: " + word);
                 reset();
                 break;
