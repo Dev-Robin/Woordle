@@ -198,7 +198,7 @@ function enterKey() {
 
 // Reset the board for the next game
 function reset() {
-    // For every tile on the board; clear the text
+    // For every tile on the board; clear the text and reset colors
     for (let i = 1; i <= 30; i++) {
         document.getElementById(i).innerHTML = "";
         document.getElementById(i).style.backgroundColor = "var(--background)";
@@ -207,6 +207,9 @@ function reset() {
         colum = 0;
         grid = 1;       
     }
+    guessArr.length = 0;
+    colum = 0;
+    grid = 1; 
     // Reset keyboard colors
     let kbButtons = document.getElementsByTagName('button');
 
