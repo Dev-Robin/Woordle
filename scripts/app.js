@@ -63,8 +63,8 @@ function checkWord() {
         // Check if the guess matches any letters with the word
         for (let i = 0; i <= guessArr.length; i++) {
             // Check for duplicate letters in the guess and match them with duplicates in the hidden word
-            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i]) && wordDuplicates.includes(guessArr[i])) {
-                if (wordDuplicates.length > 0) {
+            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i])) {
+                if (wordDuplicates.length > 0 && wordDuplicates.includes(guessArr[i])) {
                     for (let k = 0; k <= wordDuplicates.length; k++) {
                         for (let j = 0; j <= guessDuplicates.length; j++) {
                             if (wordDuplicates[k] == guessDuplicates[j]) {
@@ -80,8 +80,10 @@ function checkWord() {
                     if (i <= guessArr.indexOf(guessArr[i])) {
                         if (guessArr[i] == wordArr[i]) {
                             correctLetter(i);
-                        } else {
+                        } else if (wordArr.includes(guessArr[i])) {
                             semiCorrectLetter(i);
+                        } else {
+                            incorrectLetter(i);
                         }
                     } else {
                         incorrectLetter(i);
