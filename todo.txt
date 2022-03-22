@@ -1,1 +1,102 @@
+let checkedArr = [];
+for (let i = 0; i <= guessArr.length; i++) {
+    if (guessArr[i] == wordArr[i] && guessArr[i] != null) {
+        correctLetter(i);
+        checkedArr.push(i)
+    }
+}
+for (let k = 0; k <= guessArr.length; k++) {
+    if (wordArr.includes(guessArr[k]) && checkedArr.includes(k) == false) {
+        if (guessDuplicates.includes(guessArr[k])) {
+            if (wordDuplicates.length > 0 && wordDuplicates.includes(guessArr[k])) {
+                semiCorrectLetter(k);
+            } else {
+                for (let j = 0; j <= checkedArr.length; j++) {
+                    if (guessArr[k] == guessArr[checkedArr[j]]) {
+                        incorrectLetter(k);
+                    } else {
+                        semiCorrectLetter(k);
+                    }
+                }
+            }
+        } else {
+            semiCorrectLetter(k);
+        }
+    } else if (checkedArr.includes(k) == false) {
+        incorrectLetter(k);
+    }
+}
+checkedArr.length = 0;
 
+
+
+Poging 2
+
+
+let checkedArr = [];
+for (let i = 0; i <= guessArr.length; i++) {
+    if (guessArr[i] == wordArr[i] && guessArr[i] != null) {
+        correctLetter(i);
+        checkedArr.push(i);
+    }
+}
+// Remove all checked letter from the secret word array
+if (checkedArr.length > 0) {
+    for (let c = 0; c <= checkedArr.length; c++) {
+        wordArr = wordArr.splice(checkedArr[c], 1);
+    }
+}
+// check for remaining letters
+for (let j = 0; j <= guessArr.length; j++) {
+    if (wordArr.includes(guessArr[j])) {
+        semiCorrectLetter(j);
+    } else {
+        incorrectLetter(j);
+    }
+}
+
+
+        let guessDuplicates = checkDuplicates(guess);
+        console.log(guessDuplicates);
+        // Check if the guess matches any letters with the word
+        for (let i = 0; i <= guessArr.length; i++) {
+            // Check for duplicate letters in the guess and match them with duplicates in the hidden word
+            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i])) {
+                if (wordDuplicates.length > 0 && wordDuplicates.includes(guessArr[i])) {
+                    for (let k = 0; k <= wordDuplicates.length; k++) {
+                        for (let j = 0; j <= guessDuplicates.length; j++) {
+                            if (wordDuplicates[k] == guessDuplicates[j]) {
+                                if (guessArr[i] == wordArr[i]) {
+                                    correctLetter(i);
+                                } else {
+                                    semiCorrectLetter(i);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (i <= guessArr.indexOf(guessArr[i])) {
+                        if (guessArr[i] == wordArr[i]) {
+                            correctLetter(i);
+                        } else if (wordArr.includes(guessArr[i])) {
+                            semiCorrectLetter(i);
+                        } else {
+                            incorrectLetter(i);
+                        }
+                    } else {
+                        incorrectLetter(i);
+                    }
+                }
+            } else {
+                if (word.includes(guessArr[i])) {
+                    // Check if the guessed letter is positioned at the right place
+                    if (guessArr[i] == wordArr[i]) {
+                        correctLetter(i);
+                    } else {
+                        semiCorrectLetter(i);
+                    }
+                } else {
+                    incorrectLetter(i);
+                }
+            }
+        }

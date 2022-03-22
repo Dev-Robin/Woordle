@@ -57,48 +57,38 @@ function checkWord() {
         }
         alert("Je hebt het goed geraden! Het woord was: " + word);
     } else {
-        const wordArr = word.split('');
-        let guessDuplicates = checkDuplicates(guess);
-        console.log(guessDuplicates);
-        // Check if the guess matches any letters with the word
+        let wordArr = word.split('');
+        let checkedArr = [];
+        // Check for all correct letters first
         for (let i = 0; i <= guessArr.length; i++) {
-            // Check for duplicate letters in the guess and match them with duplicates in the hidden word
-            if (guessDuplicates.length > 0 && guessDuplicates.includes(guessArr[i])) {
-                if (wordDuplicates.length > 0 && wordDuplicates.includes(guessArr[i])) {
-                    for (let k = 0; k <= wordDuplicates.length; k++) {
-                        for (let j = 0; j <= guessDuplicates.length; j++) {
-                            if (wordDuplicates[k] == guessDuplicates[j]) {
-                                if (guessArr[i] == wordArr[i]) {
-                                    correctLetter(i);
-                                } else {
-                                    semiCorrectLetter(i);
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    if (i <= guessArr.indexOf(guessArr[i])) {
-                        if (guessArr[i] == wordArr[i]) {
-                            correctLetter(i);
-                        } else if (wordArr.includes(guessArr[i])) {
-                            semiCorrectLetter(i);
-                        } else {
-                            incorrectLetter(i);
-                        }
-                    } else {
-                        incorrectLetter(i);
-                    }
+            if (guessArr[i] == wordArr[i] && guessArr[i] != null) {
+                correctLetter(i);
+                checkedArr.push(i);
+            }
+        }
+        console.log(checkedArr);
+        // Remove all checked letter from the secret word array
+        if (checkedArr.length > 0) {
+            for (let c = 0; c <= checkedArr.length; c++) {
+                if (checkedArr[c] != null) {
+                    console.log(checkedArr[c]);
+                    wordArr.splice(checkedArr[c], 1);
                 }
-            } else {
-                if (word.includes(guessArr[i])) {
-                    // Check if the guessed letter is positioned at the right place
-                    if (guessArr[i] == wordArr[i]) {
-                        correctLetter(i);
-                    } else {
-                        semiCorrectLetter(i);
+            }
+        }
+        console.log(wordArr);
+        // check for remaining letters
+        for (let j = 0; j <= guessArr.length; j++) {
+            if (checkedArr.includes(j) == false) {
+                if (wordArr.includes(guessArr[j])) {
+                    semiCorrectLetter(j);
+                    // Remove the letter after it has been checked
+                    const index = wordArr.indexOf(guessArr[j]);
+                    if (index > -1) {
+                        wordArr.splice(index, 1);
                     }
                 } else {
-                    incorrectLetter(i);
+                    incorrectLetter(j);
                 }
             }
         }
