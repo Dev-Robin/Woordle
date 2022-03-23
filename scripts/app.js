@@ -101,7 +101,10 @@ function correctLetter (i) {
     // Paint the square of the correct letter green
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
     document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
-    document.getElementById(guessArr[i]).style.backgroundColor = "var(--correct)";
+    // Check if the keyboard key hasn't already been colored
+    if (window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(182, 180, 180)") {
+        document.getElementById(guessArr[i]).style.backgroundColor = "var(--correct)";
+    }
 }
 
 // The guessed letter is not at the right place but the word does contain the guessed letter
@@ -110,7 +113,10 @@ function semiCorrectLetter (i) {
     // Paint the square of the correct letter yellow
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--semiCorrect)";
     document.getElementById(colum*5 + i + 1).style.borderColor = "var(--semiCorrect)";
-    document.getElementById(guessArr[i]).style.backgroundColor = "var(--semiCorrect)";
+    // Check if the keyboard key hasn't already been colored
+    if (window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(182, 180, 180)") {
+        document.getElementById(guessArr[i]).style.backgroundColor = "var(--semiCorrect)";
+    }
 }
 
  // The guessed letter is not in the word
@@ -121,8 +127,12 @@ function incorrectLetter (i) {
         document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--incorrect)";
         document.getElementById(colum*5 + i + 1).style.borderColor = "var(--incorrect)";
     }
+    
     if (guessArr[i] != null) {
-        document.getElementById(guessArr[i]).style.backgroundColor = "var(--incorrect)";
+        // Check if the keyboard key hasn't already been colored
+        if (window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(182, 180, 180)") {
+            document.getElementById(guessArr[i]).style.backgroundColor = "var(--incorrect)";
+        }
     }
 }
 
