@@ -55,7 +55,7 @@ function checkWord() {
             document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
             document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
         }
-        alert("Je hebt het goed geraden! Het woord was: " + word);
+        alertPopup("Je hebt het goed geraden! Het woord was: ", word);
     } else {
         let wordArr = word.split('');
         let checkedArr = [];
@@ -186,13 +186,13 @@ function enterKey() {
             }
             if (colum >= 6) {
                 // Reset if max amount of guesses is reached
-                alert("Je hebt al je beurten gespeeld. Het woord was: " + word);
+                alertPopup("Je hebt al je beurten gespeeld. Het woord was: ", word);
                 reset();
                 break;
             }
             break;
         } else if (i == words.length + 1) {
-            alert("Dit woord staat niet in de lijst. Probeer een ander woord.");
+            alertPopup("Dit woord staat niet in de lijst. Probeer een ander woord.", "");
             break;
         }
     }   

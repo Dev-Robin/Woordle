@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic:wdth@100&display=swap" rel="stylesheet">    
@@ -14,6 +15,13 @@
     <script type="text/javascript" src="scripts/app.js"></script>    
 </head>
 <body onload="randWord()">
+    <!--Popup-->
+    <div class="popup" id="myPopup">
+        <div class="popupContent">
+            <span class="close">&times;</span>
+            <p id="popupText">content</p>
+        </div>
+    </div>
     <header>
         <h1 class="title">WOORDLE</h1>
     </header>
@@ -91,4 +99,5 @@
     </div>
     <!--<button type="button" class="random" onclick="randWord()">Click</button>-->
 </body>
+<script type="text/javascript" src="scripts/popup.js"></script>
 </html>
