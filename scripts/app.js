@@ -59,6 +59,7 @@ function checkWord() {
     } else {
         let wordArr = word.split('');
         let checkedArr = [];
+        console.log(wordArr);
         // Check for all correct letters first
         for (let i = 0; i <= guessArr.length; i++) {
             if (guessArr[i] == wordArr[i] && guessArr[i] != null) {
@@ -69,7 +70,7 @@ function checkWord() {
         console.log(checkedArr);
         // Remove all checked letter from the secret word array
         if (checkedArr.length > 0) {
-            for (let c = 0; c <= checkedArr.length; c++) {
+            for (let c = checkedArr.length - 1; c >= 0; c--) {
                 if (checkedArr[c] != null) {
                     console.log(checkedArr[c]);
                     wordArr.splice(checkedArr[c], 1);
