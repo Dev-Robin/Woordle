@@ -69,6 +69,7 @@ function checkWord() {
         }
         console.log(checkedArr);
         // Remove all checked letter from the secret word array
+        // Has to be removed after the first check because this check, checks if the letters are at the correct spot
         if (checkedArr.length > 0) {
             for (let c = checkedArr.length - 1; c >= 0; c--) {
                 if (checkedArr[c] != null) {
