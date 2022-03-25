@@ -101,8 +101,8 @@ function correctLetter (i) {
     // Paint the square of the correct letter green
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
     document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
-    // Check if the keyboard key hasn't already been colored
-    if (window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(182, 180, 180)" || window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(109, 179, 71)") {
+    // Check if the keyboard key hasn't already been colored or is colored yellow
+    if (window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(182, 180, 180)" || window.getComputedStyle(document.getElementById(guessArr[i]), null).getPropertyValue('background-color') == "rgb(219, 210, 77)") {
         document.getElementById(guessArr[i]).style.backgroundColor = "var(--correct)";
     }
 }
