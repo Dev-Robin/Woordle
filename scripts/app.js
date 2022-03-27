@@ -12,10 +12,8 @@ function randWord() {
     const rand = Math.floor(Math.random() * words.length);
 
     word = words[rand];
-    console.log(word);
     // Check for duplicate letters
     wordDuplicates = checkDuplicates(word);
-    console.log(wordDuplicates);
 }
 
 
@@ -28,9 +26,7 @@ function keyPress() {
     function logkey(e) {
         // Check if the pressed key is an actual letter
         if (e.keyCode >= 65 && e.keyCode <= 90) {
-            console.log(e.keyCode);
             letter = e.key;
-            console.log(letter);
             
             // Add letter to word grid
             addLetter(letter);
@@ -44,13 +40,11 @@ function keyPress() {
     }
 }
 
-// Function to compare the guess to the word
+// Function to compare the guess to the secret word
 function checkWord() {
     
-    console.log(guess);
-    // Check if the word and the guess have a direct match
+    // Check if the secret word and the guess have a direct match
     if (guess == word) {
-        console.log("You guessed the right word!");
         for (let i = 0; i <= guessArr.length - 1; i++) {
             document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
             document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
@@ -59,7 +53,6 @@ function checkWord() {
     } else {
         let wordArr = word.split('');
         let checkedArr = [];
-        console.log(wordArr);
         // Check for all correct letters first
         for (let i = 0; i <= guessArr.length; i++) {
             if (guessArr[i] == wordArr[i] && guessArr[i] != null) {
@@ -67,18 +60,15 @@ function checkWord() {
                 checkedArr.push(i);
             }
         }
-        console.log(checkedArr);
         // Remove all checked letter from the secret word array
         // Has to be removed after the first check because this check, checks if the letters are at the correct spot
         if (checkedArr.length > 0) {
             for (let c = checkedArr.length - 1; c >= 0; c--) {
                 if (checkedArr[c] != null) {
-                    console.log(checkedArr[c]);
                     wordArr.splice(checkedArr[c], 1);
                 }
             }
         }
-        console.log(wordArr);
         // check for remaining letters
         for (let j = 0; j <= guessArr.length; j++) {
             if (checkedArr.includes(j) == false) {
@@ -99,7 +89,6 @@ function checkWord() {
 
 // The guessed letter is at the right place
 function correctLetter (i) {
-    console.log(guessArr[i] + " is positioned at the right place!");
     // Paint the square of the correct letter green
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--correct)";
     document.getElementById(colum*5 + i + 1).style.borderColor = "var(--correct)";
@@ -109,9 +98,8 @@ function correctLetter (i) {
     }
 }
 
-// The guessed letter is not at the right place but the word does contain the guessed letter
+// The guessed letter is not at the right place but the secret word does contain the guessed letter
 function semiCorrectLetter (i) {
-    console.log("The word contains: " + guessArr[i]);
     // Paint the square of the correct letter yellow
     document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--semiCorrect)";
     document.getElementById(colum*5 + i + 1).style.borderColor = "var(--semiCorrect)";
@@ -121,9 +109,8 @@ function semiCorrectLetter (i) {
     }
 }
 
- // The guessed letter is not in the word
+ // The guessed letter is not in the secret word
 function incorrectLetter (i) {
-    console.log("The word does not contain: " + guessArr[i]);
     // Paint the square of the incorrect letter grey
     if (colum*5 + i + 1 != colum*5 + 6) {
         document.getElementById(colum*5 + i + 1).style.backgroundColor = "var(--incorrect)";
@@ -147,7 +134,6 @@ function addLetter(letter) {
         document.getElementById(grid).style.animation = "keyPress 0.3s";
 
         guessArr.push(letter);
-        console.log(guessArr);
         grid++;
     }
 }
@@ -155,7 +141,6 @@ function addLetter(letter) {
 // Get value of the pressed key
 function keyBoard(button) {
     letter = button.getAttribute("data-key");
-    console.log(letter);
     addLetter(letter);
 }
 
